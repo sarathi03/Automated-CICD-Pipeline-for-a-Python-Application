@@ -21,6 +21,6 @@ class AppHandler(BaseHTTPRequestHandler):
         print(f"HTTP: {format % args}", flush=True)
 
 
-server = ThreadingHTTPServer(("127.0.0.1", 5000), AppHandler)
+server = ThreadingHTTPServer(("0.0.0.0", 5000), AppHandler)
 print("Application running on http://127.0.0.1:5000", flush=True)
 server.serve_forever()

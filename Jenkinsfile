@@ -22,9 +22,22 @@ pipeline {
             }
         }
 
+        stage('Docker Build') {
+            steps {
+                sh 'docker build -t devops-cicd-demo:latest .'
+            }
+        }
+
+        stage('Docker Image Verification') {
+            steps {
+                sh 'docker image inspect devops-cicd-demo:latest'
+                sh 'docker image ls devops-cicd-demo:latest'
+            }
+        }
+
         stage('Pipeline Success') {
             steps {
-                echo 'GitHub checkout and pipeline execution completed!'
+                echo 'Checkout, application check, and Docker build completed!'
             }
         }
     }
